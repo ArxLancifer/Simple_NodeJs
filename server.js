@@ -28,6 +28,15 @@ const server = http.createServer((req, res) => {
       };
       res.end(JSON.stringify(objToJson));
     } //student if
+  } else if (page == "/tossacoin") {
+    let winner = Math.random() > 0.5 ? "Winner" : "Loser";
+    let loser = winner == "Winner" ? "Loser" : "Winner";
+    const tossResult = {
+      playerone: winner,
+      playertwo: loser,
+    };
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(tossResult));
   } //else if
   else if (page == "/css/style.css") {
     indexPages(res, req, "/css/style.css", myDir);
